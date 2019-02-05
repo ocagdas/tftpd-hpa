@@ -1,0 +1,8 @@
+FROM alpine
+
+RUN apk add --update tftp-hpa
+
+VOLUME /var/tftpboot
+
+EXPOSE 69/udp
+CMD ["/usr/sbin/in.tftpd","--foreground","--listen","--verbose", "-u", "root","--secure","/var/tftpboot"]
